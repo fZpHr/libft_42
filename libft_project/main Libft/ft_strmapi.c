@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbelle <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 18:16:25 by hbelle            #+#    #+#             */
-/*   Updated: 2023/11/05 16:27:43 by hbelle           ###   ########.fr       */
+/*   Created: 2023/11/02 13:53:05 by hbelle            #+#    #+#             */
+/*   Updated: 2023/11/02 15:08:44 by hbelle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	long int	max;
-	void		*ptr;
+	int		i;
+	int		j;
+	char	*rtr;
 
-	max = nmemb * size;
-	if (max < 0 || ((int) nmemb < 0 && (int)size < 0 ))
+	if ((s == NULL || f == NULL))
 		return (NULL);
-	ptr = malloc(max);
-	if (ptr == NULL)
-		return (ptr);
-	ft_bzero(ptr, max);
-	return (ptr);
+	rtr = (char *)malloc(ft_strlen(s) + 1);
+	if (rtr == NULL)
+		return (NULL);
+	i = 0;
+	j = ft_strlen(s);
+	while (i < j)
+	{
+		rtr[i] = f(i, s[i]);
+		i++;
+	}
+	rtr[j] = '\0';
+	return (rtr);
 }

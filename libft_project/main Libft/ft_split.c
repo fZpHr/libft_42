@@ -6,7 +6,7 @@
 /*   By: hbelle <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:49:22 by hbelle            #+#    #+#             */
-/*   Updated: 2023/11/05 14:38:53 by hbelle           ###   ########.fr       */
+/*   Updated: 2023/11/05 14:36:42 by hbelle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
@@ -75,18 +75,34 @@ void	putsplit(char **split, char *str, char charset)
 	}
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char const *str, char c)
 {
 	char	**data;
 	int		i;
 
-	if (!s)
+	if (!str)
 		return (NULL);
-	i = count((char *)s, c);
+	i = count((char *)str, c);
 	data = (char **) malloc(sizeof(char *) * (i + 1));
 	if (data == NULL)
 		return (NULL);
 	data[i] = 0;
-	putsplit(data, (char *)s, c);
+	putsplit(data, (char *)str, c);
 	return (data);
+}
+#include <stdio.h>
+
+int main ()
+{
+    char const    input[1000] = "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultricies diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.";
+    char        delimiter = 'z';
+    int    i;
+    i = 0;
+    char    **split = ft_split(input, delimiter);
+    while (i != 2)
+    {
+        printf("Split[%d]:%s\n", i, split[i]);
+        i++;
+    }
+    return (0);
 }

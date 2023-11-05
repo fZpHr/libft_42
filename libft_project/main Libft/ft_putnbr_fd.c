@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbelle <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 18:16:25 by hbelle            #+#    #+#             */
-/*   Updated: 2023/11/05 16:27:43 by hbelle           ###   ########.fr       */
+/*   Created: 2023/11/02 16:06:57 by hbelle            #+#    #+#             */
+/*   Updated: 2023/11/02 16:09:54 by hbelle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	ft_putnbr_fd(int nb, int fd)
 {
-	long int	max;
-	void		*ptr;
+	long int	a;
 
-	max = nmemb * size;
-	if (max < 0 || ((int) nmemb < 0 && (int)size < 0 ))
-		return (NULL);
-	ptr = malloc(max);
-	if (ptr == NULL)
-		return (ptr);
-	ft_bzero(ptr, max);
-	return (ptr);
+	a = nb;
+	if (a < 0)
+	{
+		a = a * (-1);
+		write(fd, "-", 1);
+	}
+	if (a <= 9)
+	{
+		a = a + 48;
+		write(fd, &a, 1);
+	}
+	else
+	{
+		ft_putnbr_fd((a / 10), fd);
+		a = a % 10 + 48;
+		write(fd, &a, 1);
+	}
 }
