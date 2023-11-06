@@ -17,6 +17,8 @@ int	ft_atoi(const char *nptr)
 	int	sign;
 	int	res;
 
+	if (!nptr)
+		return (NULL);
 	i = 0;
 	res = 0;
 	sign = 1;
