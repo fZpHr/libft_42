@@ -17,16 +17,16 @@ void	*ft_memmove(void *dest, const void *src, size_t size)
 	unsigned char		*ptrsrc;
 	unsigned int		i;
 
+	if (!dest || !src)
+        	return (NULL);
 	i = 0;
 	ptr = dest;
 	ptrsrc = (unsigned char *)src;
 	if (dest == src)
 		return (dest);
 	if (dest < src)
-	{
 		while (size--)
 			*ptr++ = *ptrsrc++;
-	}
 	else
 	{
 		i = size;
