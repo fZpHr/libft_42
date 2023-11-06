@@ -13,15 +13,18 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	const char	*ptr;
+	size_t	i;
+	char	*ptr;
 
-	ptr = s;
-	if (*ptr == c)
-		return ((char *)ptr);
-	while (*ptr++ && n-- > 0)
+	i = 0;
+	ptr = (void *)s;
+	if (!s)
+		return (NULL);
+	while (i < n)
 	{
-		if (*ptr == c)
-			return ((char *)ptr);
+		if (ptr[i] == (char)c)
+			return (&ptr[i]);
+		i++;
 	}
 	return (NULL);
 }
@@ -30,12 +33,15 @@ void	*ft_memchr(const void *s, int c, size_t n)
 #include <string.h>
 
 int main () {
-   char str[] = {0, 1, 2 ,3 ,4 ,5};
-   char *ret;
+   char str[6] = {0, 1, 2 ,3 ,4 ,5};
+   //char *ret;
+   char *et;
 
-   ret = ft_memchr(str, 0, 1);
-
-   printf("%s\n", ret);
+  // ret = ft_memchr(str, 256, 3);
+   et = memchr(str, 260, 3);
+ //  printf("%s\n", ret);
+   printf("%s\n", et);
+   printf("???");
 
    return(0);
 }
