@@ -16,6 +16,8 @@ char	*ft_strrchr(const char *s, int c)
 	const char	*ptr;
 	int			i;
 
+	if (!s)
+		return (NULL);
 	ptr = s;
 	if (c > 255)
 		c = c % 256;
