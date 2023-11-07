@@ -68,6 +68,8 @@ static void	putsplit(char **split, char *str, char charset)
 			while (separator(str[i + j], charset) == 0)
 				j++;
 			split[count] = (char *)malloc(sizeof(char) * (j + 1));
+			if (!split[count])
+				return ;
 			putword(split[count], str + i, charset);
 			i = i + j;
 			count++;

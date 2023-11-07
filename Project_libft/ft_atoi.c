@@ -6,7 +6,7 @@
 /*   By: hbelle <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 19:32:34 by hbelle            #+#    #+#             */
-/*   Updated: 2023/11/06 13:52:20 by hbelle           ###   ########.fr       */
+/*   Updated: 2023/11/07 11:33:52 by hbelle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -17,8 +17,6 @@ int	ft_atoi(const char *nptr)
 	int	sign;
 	int	res;
 
-	if (!nptr)
-		return (0);
 	i = 0;
 	res = 0;
 	sign = 1;
