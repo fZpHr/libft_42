@@ -60,7 +60,7 @@ SRCSBONUS	=	ft_lstnew.c \
 OBJTS	=	${SRCS:.c=.o} 
 OBJTSBONUS	=	${SRCSBONUS:.c=.o}
 
-CC	=	gcc
+CC	=	cc
 RM	=	rm -f
 
 CFLAGS = -Wall -Wextra -Werror
