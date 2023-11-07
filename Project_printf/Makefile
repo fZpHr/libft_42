@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: hbelle <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/06 14:30:20 by hbelle            #+#    #+#              #
-#    Updated: 2023/11/06 14:40:45 by hbelle           ###   ########.fr        #
+#    Created: 2023/10/05 17:52:23 by hbelle            #+#    #+#              #
+#    Updated: 2023/11/07 11:57:47 by hbelle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,29 +57,30 @@ SRCSBONUS	=	libft/ft_lstnew.c \
 		libft/ft_lstiter.c \
 		libft/ft_lstmap.c
 
-OBJTS	=	${SRCS:.c=.o} 
-OBJTSBONUS	=	${SRCSBONUS:.c=.o}
+SRCSPERSO	=	libft/ft_countdigits.c \
 
-CC	=	gcc
+OBJTS	=	${SRCS:.c=.o} ${SRCSBONUS:.c=.o} ${SRCSPERSO:.c=.o} 
+
+
+CC	=	cc
 RM	=	rm -f
 
 CFLAGS = -Wall -Wextra -Werror
 
 .c.o:
-	${CC} ${CFLAGS} -I libft/includes -c $< -o ${<:.c=.o}
+	${CC} ${CFLAGS} -I libft -c $< -o ${<:.c=.o}
 
 $(NAME): ${OBJTS}
 		ar rcs ${NAME} ${OBJTS}
 
 all:	${NAME}
 
-bonus:	${OBJTSBONUS}
-		ar rcs ${NAME} ${OBJTSBONUS}
-
 clean:
-	${RM} ${OBJTS} ${OBJTSBONUS}
+	${RM} ${OBJTS}
 
 fclean:	clean
 	${RM} ${NAME}
 
 re:	fclean all
+
+.PHONY: all bonus clean fclean re
