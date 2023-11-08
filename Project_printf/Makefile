@@ -6,7 +6,7 @@
 #    By: hbelle <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/05 17:52:23 by hbelle            #+#    #+#              #
-#    Updated: 2023/11/07 11:57:47 by hbelle           ###   ########.fr        #
+#    Updated: 2023/11/08 14:47:29 by hbelle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,7 @@ SRCSBONUS	=	libft/ft_lstnew.c \
 		libft/ft_lstmap.c
 
 SRCSPERSO	=	libft/ft_countdigits.c \
+				libft/ft_putnbr_fd_base.c \
 
 OBJTS	=	${SRCS:.c=.o} ${SRCSBONUS:.c=.o} ${SRCSPERSO:.c=.o} 
 

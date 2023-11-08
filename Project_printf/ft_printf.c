@@ -6,7 +6,7 @@
 /*   By: hbelle <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 14:45:16 by hbelle            #+#    #+#             */
-/*   Updated: 2023/11/07 16:58:14 by hbelle           ###   ########.fr       */
+/*   Updated: 2023/11/08 15:45:01 by hbelle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft/libft.h"
@@ -14,42 +14,90 @@
 int	ft_printf(const char *format, ...)
 {
 	size_t	i;
-	char	*c;
-	size_t	printc;
-	int	num;
+	size_t	count;
+	int		num;
+	char	*str;
 	va_list	args;
+	void *ptr;
+	char *hexa_lower;
+	char *hexa_upper;
+
+	hexa_lower = "0123456789abcdef";
+	hexa_upper = "0123456789ABCDEF";
 
 	va_start(args, format);
 	i = 0;
-	printc = 0;
-	c = (char *)format;
-	while (c[i])
+	count = 0;
+	while (format[i])
 	{
-		if (c[i] != '%')
+		if (format[i] != '%')
 		{
-			ft_putchar_fd(c[i], 1);
-			printc++;
+			ft_putchar_fd(format[i], 1);
+			count++;
 		}
 		else
 		{
 			i++;
-			if (c[i] == 'd')
+			if (format[i] == 'd')
 			{
 				num = va_arg(args, int);
 				ft_putnbr_fd(num, 1);
-				printc += ft_countdigits(num);
+				count += ft_countdigits(num);
+			}
+			else if (format[i] == 'c')
+			{
+				num = va_arg(args, int);
+				ft_putchar_fd(num, 1);
+				count += 1;
+			}
+			else if (format[i] == 's')
+			{
+				str = va_arg(args, char *);
+				ft_putstr_fd(str, 1);
+				count += ft_strlen(str);
+			}
+			else if (format[i] == 'p')
+			{
+				ptr = va_arg(args, void *);
+				ft_putstr_fd("0x", 1);
+				ft_putnbr_fd_base_void(ptr, 1, hexa_lower);
+				count += ft_strlen(str);
+			}
+			if (format[i+1] == '\n')
+			{
+				ft_putchar_fd('\n', 1);
 			}
 		}
 		i++;
 	}
 	va_end(args);
-	return (printc);
+	return (count);
 }
 
 #include <stdio.h>
 
 int	main()
 {
-	printf(" | Retour vrai fonction : %d\n", printf("Result : %d", 100));
-	ft_printf(" | Retour ma fonction : %d\n", ft_printf("Result : %d", 100));
+	printf("=============================================================\n");
+	printf("Avec d : \n\n");	
+
+	printf(" | Retour vrai fonction : %d\n", printf("Result : %d", 128));
+	ft_printf(" | Retour ma fonction : %d\n", ft_printf("Result : %d", 128));
+	printf("=============================================================\n");
+	printf("Avec c : \n\n");	
+
+	printf(" | Retour vrai fonction : %d\n", printf("Result : %c", 'c'));
+	ft_printf(" | Retour ma fonction : %d\n", ft_printf("Result : %c", 'c'));
+	printf("=============================================================\n");
+	printf("Avec s : \n\n");	
+
+	printf(" | Retour vrai fonction : %d\n", printf("Result : %s", "Slt slt"));
+	ft_printf(" | Retour ma fonction : %d\n", ft_printf("Result : %s", "Slt slt"));
+	printf("=============================================================\n");
+
+	printf("Avec p : \n\n");	
+
+	printf(" | Retour vrai fonction : %d\n", printf("Result : %p", "0"));
+	ft_printf(" | Retour ma fonction : %d\n", ft_printf("Result : %p", "0"));
+	printf("=============================================================\n");
 }

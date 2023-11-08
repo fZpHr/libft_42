@@ -6,7 +6,7 @@
 /*   By: hbelle <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:22:51 by hbelle            #+#    #+#             */
-/*   Updated: 2023/11/07 11:57:26 by hbelle           ###   ########.fr       */
+/*   Updated: 2023/11/08 15:16:16 by hbelle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef LIBFT_H
@@ -69,5 +69,6 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 int	ft_countdigits(int num);
+void	ft_putnbr_fd_base(void *nb, int fd, char *base);
 
 #endif
