@@ -60,8 +60,8 @@ int	ft_printf(const char *format, ...)
 			{
 				ptr = va_arg(args, void *);
 				ft_putstr_fd("0x", 1);
-				ft_putnbr_fd_base_void(ptr, 1, hexa_lower);
-				count += ft_strlen(str);
+				ft_putnbr_fd_base((unsigned long long int)ptr, 1, hexa_lower);
+				count += ft_countdigits_base((unsigned long long int)ptr, 16) + 2;
 			}
 			if (format[i+1] == '\n')
 			{
@@ -97,7 +97,7 @@ int	main()
 
 	printf("Avec p : \n\n");	
 
-	printf(" | Retour vrai fonction : %d\n", printf("Result : %p", "0"));
-	ft_printf(" | Retour ma fonction : %d\n", ft_printf("Result : %p", "0"));
+	printf(" | Retour vrai fonction : %d\n", printf("Result : %p", "-1000"));
+	ft_printf(" | Retour ma fonction : %d\n", ft_printf("Result : %p", "-1000"));
 	printf("=============================================================\n");
 }

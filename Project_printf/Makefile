@@ -58,7 +58,8 @@ SRCSBONUS	=	libft/ft_lstnew.c \
 		libft/ft_lstmap.c
 
 SRCSPERSO	=	libft/ft_countdigits.c \
-				libft/ft_putnbr_fd_base.c \
+		libft/ft_countdigits_base.c \
+		libft/ft_putnbr_fd_base.c \
 
 OBJTS	=	${SRCS:.c=.o} ${SRCSBONUS:.c=.o} ${SRCSPERSO:.c=.o} 
 

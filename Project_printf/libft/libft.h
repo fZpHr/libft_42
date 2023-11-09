@@ -69,6 +69,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 int	ft_countdigits(int num);
-void	ft_putnbr_fd_base(void *nb, int fd, char *base);
+int	ft_countdigits_base(unsigned long long int num, unsigned long long int base);
+void	ft_putnbr_fd_base(unsigned long long int nb, int fd, char *base);
 
 #endif
