@@ -6,10 +6,10 @@
 /*   By: hbelle <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 16:06:57 by hbelle            #+#    #+#             */
-/*   Updated: 2023/11/02 16:09:54 by hbelle           ###   ########.fr       */
+/*   Updated: 2023/11/09 15:29:48 by hbelle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include "ft_printf.h"
 
 void	ft_putnbr_fd(int nb, int fd)
 {

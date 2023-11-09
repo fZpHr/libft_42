@@ -6,10 +6,10 @@
 /*   By: hbelle <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:25:58 by hbelle            #+#    #+#             */
-/*   Updated: 2023/11/07 11:32:13 by hbelle           ###   ########.fr       */
+/*   Updated: 2023/11/09 15:40:29 by hbelle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include "ft_printf.h"
 
 size_t	ft_strlen(const char *str)
 {

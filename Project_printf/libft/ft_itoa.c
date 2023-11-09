@@ -6,10 +6,10 @@
 /*   By: hbelle <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:55:07 by hbelle            #+#    #+#             */
-/*   Updated: 2023/11/07 11:55:13 by hbelle           ###   ########.fr       */
+/*   Updated: 2023/11/09 15:28:05 by hbelle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include "ft_printf.h"
 
 static long long int	ft_size(long long int str)
 {

@@ -6,10 +6,10 @@
 /*   By: hbelle <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 19:32:34 by hbelle            #+#    #+#             */
-/*   Updated: 2023/11/07 11:33:52 by hbelle           ###   ########.fr       */
+/*   Updated: 2023/11/09 15:03:21 by hbelle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include "ft_printf.h"
 
 int	ft_atoi(const char *nptr)
 {

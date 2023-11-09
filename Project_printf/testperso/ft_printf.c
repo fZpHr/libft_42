@@ -13,16 +13,16 @@
 
 int	ft_printf(const char *format, ...)
 {
-	size_t		i;
-	size_t		count;
-	long int	num;
-	char		*str;
+	size_t	i;
+	size_t	count;
+	int		num;
+	char	*str;
 	va_list	args;
-	void 		*ptr;
-	char 		*hexa_lower;
-	char 		*hexa_upper;
-	char		*base10_number;
-	int		error;
+	void *ptr;
+	char *hexa_lower;
+	char *hexa_upper;
+	char	*base10_number;
+	int	error;
 
 	hexa_lower = "0123456789abcdef";
 	hexa_upper = "0123456789ABCDEF";
@@ -43,7 +43,7 @@ int	ft_printf(const char *format, ...)
 		}
 		else
 		{
-			if (format[i+1] == 'd' || format[i+1] == 'i' )
+			if (format[i+1] == 'd')
 			{
 				num = va_arg(args, int);
 				ft_putnbr_fd(num, 1);
@@ -67,20 +67,12 @@ int	ft_printf(const char *format, ...)
 			else if (format[i+1] == 'p')
 			{
 				ptr = va_arg(args, void *);
-				if ((int)ptr == 0)
-				{
-					ft_putstr_fd("(nil)", 1);
-					count += 5;
-				}
-				else
-				{
-					ft_putstr_fd("0x", 1);
-					ft_putnbr_fd_base((unsigned long long int)ptr, 1, hexa_lower);
-					count += ft_countdigits_base((unsigned long long int)ptr, 16) + 3;
-				}
+				ft_putstr_fd("0x", 1);
+				ft_putnbr_fd_base((unsigned long long int)ptr, 1, hexa_lower);
+				count += ft_countdigits((unsigned long long int)ptr)+1;
 				i++;
 			}
-			/*else if (format[i+1] == 'd')
+	/*		else if (format[i+1] == 'd')
 			{
 				ptr = va_arg(args, void *);
 				ft_putstr_fd("0x", 1);
@@ -108,7 +100,6 @@ int	ft_printf(const char *format, ...)
 }
 
 #include <stdio.h>
-#include <limits.h>
 
 int	main()
 {
@@ -126,26 +117,26 @@ int	main()
 
 	printf("Avec p : \n\n");	
 
-	printf(" | Retour vrai fonction : %d\n", printf("%p", "-1000"));
-	ft_printf(" | Retour ma fonction : %d\n", ft_printf("%p", "-1000"));
+	printf(" | Retour vrai fonction : %d\n", printf("ok salut %p", "-1000"));
+	ft_printf(" | Retour ma fonction : %d\n", ft_printf("ok salut %p", "-1000"));
 	printf("=============================================================\n");
 	
 	printf("Avec p : \n\n");	
 
-	printf(" | Retour vrai fonction : %d\n", printf("%p", 0));
-	ft_printf(" | Retour vrai fonction : %d\n", ft_printf("%p", 0));
+	printf(" | Retour vrai fonction : %d\n", printf("ok salut %p", "-1000"));
+	ft_printf(" | Retour ma fonction : %d\n", ft_printf("ok salut %p", "-1000"));
 	printf("=============================================================\n");
 
 	printf("Avec d : \n\n");	
 
-	printf(" | Retour vrai fonction : %d\n", printf("%d", -1));
-	ft_printf(" | Retour ma fonction : %d\n", ft_printf("%d", -1));
+	printf(" | Retour vrai fonction : %d\n", printf("%d", 128));
+	ft_printf(" | Retour ma fonction : %d\n", ft_printf("%d", 128));
 	printf("=============================================================\n");
 
 	printf("Avec i : \n\n");	
 
-	printf(" | Retour vrai fonction : %d\n", printf("%i", INT_MIN));
-	ft_printf(" | Retour ma fonction : %d\n", ft_printf("%i", INT_MIN));
+	printf(" | Retour vrai fonction : %d\n", scanf("%i", 128)));
+	ft_printf(" | Retour ma fonction : %d\n", scanf("%i", 128));
 	printf("=============================================================\n");
 
 }

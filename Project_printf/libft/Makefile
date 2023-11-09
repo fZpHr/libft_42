@@ -6,26 +6,25 @@
 #    By: hbelle <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/05 17:52:23 by hbelle            #+#    #+#              #
-#    Updated: 2023/11/08 14:47:29 by hbelle           ###   ########.fr        #
+#    Updated: 2023/11/07 11:57:47 by hbelle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libftprintf.a
 
-SRCS	=	libft/ft_atoi.c \
-	libft/ft_strlen.c \
-	libft/ft_itoa.c\
-	libft/ft_putchar_fd.c \
-	libft/ft_putstr_fd.c \
-	libft/ft_putnbr_fd.c
-	
-
-SRCSPERSO	=	libft/ft_countdigits.c \
-		libft/ft_countdigits_base.c \
-		libft/ft_putnbr_fd_base.c \
+SRCS	=	ft_atoi.c \
+	ft_itoa.c\
+	ft_putchar_fd.c \
+	ft_putstr_fd.c \
+	ft_putnbr_fd.c \
+	ft_printf.c \
+	ft_strlen.c \
+			
+SRCSPERSO	=	ft_countdigits.c \
+		ft_countdigits_base.c \
+		ft_putnbr_fd_base.c \
 
 OBJTS	=	${SRCS:.c=.o} ${SRCSPERSO:.c=.o} 
-
 
 CC	=	cc
 RM	=	rm -f
@@ -33,7 +32,7 @@ RM	=	rm -f
 CFLAGS = -Wall -Wextra -Werror
 
 .c.o:
-	${CC} ${CFLAGS} -I libft -c $< -o ${<:.c=.o}
+	${CC} ${CFLAGS} -I includes -c $< -o ${<:.c=.o}
 
 $(NAME): ${OBJTS}
 		ar rcs ${NAME} ${OBJTS}
@@ -42,7 +41,7 @@ all:	${NAME}
 
 clean:
 	${RM} ${OBJTS}
-
+	
 fclean:	clean
 	${RM} ${NAME}
 
