@@ -11,25 +11,22 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-void	ft_putnbr_fd(int nb, int fd)
+void	ft_putnbr_fd(long int nb, int fd)
 {
-	long int	a;
-
-	a = nb;
-	if (a < 0)
+	if (nb < 0)
 	{
-		a = a * (-1);
+		nb = nb * (-1);
 		write(fd, "-", 1);
 	}
-	if (a <= 9)
+	if (nb <= 9)
 	{
-		a = a + 48;
-		write(fd, &a, 1);
+		nb = nb + 48;
+		write(fd, &nb, 1);
 	}
 	else
 	{
-		ft_putnbr_fd((a / 10), fd);
-		a = a % 10 + 48;
-		write(fd, &a, 1);
+		ft_putnbr_fd((nb / 10), fd);
+		nb = nb % 10 + 48;
+		write(fd, &nb, 1);
 	}
 }

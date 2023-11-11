@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd_base.c                                :+:      :+:    :+:   */
+/*   ft_countdigits_base.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbelle <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 14:04:46 by hbelle            #+#    #+#             */
-/*   Updated: 2023/11/09 15:29:56 by hbelle           ###   ########.fr       */
+/*   Created: 2023/11/08 14:49:01 by hbelle            #+#    #+#             */
+/*   Updated: 2023/11/09 15:04:06 by hbelle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-void	ft_putnbr_fd_base(long int nb, int fd, char *base)
+int	ft_countdigits_base_unsigned(unsigned long int nb, unsigned int base)
 {
-	long int base_len;
-
-	base_len = ft_strlen(base);
-	if (nb >= base_len)
+	int	count;
+    
+   	count = 0;
+   	if (nb == 0)
+        	return 1;
+	while (nb >= base)
 	{
-		ft_putnbr_fd_base(nb / base_len, fd, base);
-		ft_putchar_fd(base[nb % base_len], fd);
+		nb /= base;
+		count++;
 	}
-	else
-		ft_putchar_fd(base[nb], fd);
+	return count;
 }

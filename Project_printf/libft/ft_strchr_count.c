@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd_base.c                                :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbelle <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 14:04:46 by hbelle            #+#    #+#             */
-/*   Updated: 2023/11/09 15:29:56 by hbelle           ###   ########.fr       */
+/*   Created: 2023/10/31 15:02:17 by hbelle            #+#    #+#             */
+/*   Updated: 2023/11/07 11:32:25 by hbelle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-void	ft_putnbr_fd_base(long int nb, int fd, char *base)
+int	ft_strchr_count(const char *s, int c)
 {
-	long int base_len;
-
-	base_len = ft_strlen(base);
-	if (nb >= base_len)
+	const char	*ptr;
+	int	count;
+	
+	count = 0;
+	ptr = s;
+	if (c > 255)
+		c = c % 256;
+	if (*ptr == c)
+		count++;
+	while (*ptr++)
 	{
-		ft_putnbr_fd_base(nb / base_len, fd, base);
-		ft_putchar_fd(base[nb % base_len], fd);
+		if (*ptr == c)
+			count++;
 	}
-	else
-		ft_putchar_fd(base[nb], fd);
+	return (count);
 }

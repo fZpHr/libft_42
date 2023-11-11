@@ -9,8 +9,8 @@
 /*   Updated: 2023/11/09 15:27:50 by hbelle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef PRINTF_H
-# define PRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <stddef.h>
 # include <stdlib.h>
@@ -47,30 +47,22 @@ char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
-int	ft_putchar_fd(char c, int fd);
+void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
-void	ft_putnbr_fd(int n, int fd);
+void	ft_putnbr_fd(long int n, int fd);
 
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}				t_list;
 
-t_list	*ft_lstnew(void *content);
-void	ft_lstadd_front(t_list **lst, t_list *new);
-int		ft_lstsize(t_list *lst);
-t_list	*ft_lstlast(t_list *lst);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_lstdelone(t_list *lst, void (*del)(void *));
-void	ft_lstclear(t_list **lst, void (*del)(void *));
-void	ft_lstiter(t_list *lst, void (*f)(void *));
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-
+int	ft_strchr_count(const char *s, int c);
+void	ft_putnbr_fd_unsigned(unsigned long int nb, int fd);
 int	ft_countdigits(int num);
-int	ft_countdigits_base(unsigned long long int num, unsigned long long int base);
-void	ft_putnbr_fd_base(unsigned long long int nb, int fd, char *base);
+int	ft_countdigits_unsigned(unsigned long int num);
+int	ft_countdigits_base(long int nb, int base);
+int	ft_countdigits_base_unsigned(unsigned long int nb,unsigned int base);
+void	ft_putnbr_fd_base(long int nb, int fd, char *base);
+void	ft_putnbr_fd_base_unsigned(unsigned long int nb, int fd, char *base);
+
 int	ft_printf(const char *format, ...);
+
 
 #endif

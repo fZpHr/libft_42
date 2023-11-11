@@ -13,18 +13,22 @@
 NAME	=	libftprintf.a
 
 SRCS	=	ft_atoi.c \
-	ft_itoa.c\
+	ft_itoa.c \
 	ft_putchar_fd.c \
 	ft_putstr_fd.c \
 	ft_putnbr_fd.c \
+	ft_putnbr_fd_unsigned.c \
+	ft_putnbr_fd_base.c \
+	ft_putnbr_fd_base_unsigned.c \
 	ft_printf.c \
 	ft_strlen.c \
-			
-SRCSPERSO	=	ft_countdigits.c \
-		ft_countdigits_base.c \
-		ft_putnbr_fd_base.c \
-
-OBJTS	=	${SRCS:.c=.o} ${SRCSPERSO:.c=.o} 
+	ft_countdigits.c \
+	ft_countdigits_unsigned.c \
+	ft_countdigits_base.c \
+	ft_countdigits_base_unsigned.c \
+	ft_strchr_count.c \
+	
+OBJTS	=	${SRCS:.c=.o}
 
 CC	=	cc
 RM	=	rm -f

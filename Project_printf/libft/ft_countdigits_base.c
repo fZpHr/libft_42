@@ -11,14 +11,21 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	ft_countdigits_base(unsigned long long int num, unsigned long long int base)
+int	ft_countdigits_base(long int nb, int base)
 {
 	int	count;
-    
+    	
    	count = 0;
-	while (num >= base)
+   	if (nb == 0)
+        	return 1;
+    	if (nb < 0)
+   	{
+       	 	nb = -nb;
+        	count++;
+  	}
+	while (nb >= base)
 	{
-		num /= base;
+		nb /= base;
 		count++;
 	}
 	return count;
